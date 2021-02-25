@@ -138,15 +138,15 @@ func getUpdatedVersionsDeps() map[string]Version {
 	versions := map[string]Version{}
 	for _, v := range getTags(client) {
 		fmt.Println("checking version:", v)
-		versions[v] = getUpdatedVersionDeps(client, v)
+		versions[v] = getUpdatedVersionDeps(readSumFileLines(client, v))
 	}
 
 	return versions
 }
 
-func getUpdatedVersionDeps(c httpClient, v string) Version {
+func getUpdatedVersionDeps(in []string) Version {
 	deps := map[string]string{}
-	for _, dep := range readSumFileLines(c, v) {
+	for _, dep := range in {
 		parts := strings.Split(dep, " ")
 		cleanedVersion := cleanVersion(parts[1])
 
