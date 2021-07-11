@@ -26,7 +26,7 @@ func main() {
 		e.GET("/validate", func(c *gin.Context) {
 			c.HTML(http.StatusOK, "validator.html", ValidateResponse{
 				GoVersion:      "1.16.4",
-				KrakendVersion: "v1.4.0",
+				KrakendVersion: "v1.4.1",
 			})
 		})
 
@@ -57,7 +57,7 @@ func main() {
 		})
 
 		e.GET("/", func(c *gin.Context) {
-			c.HTML(http.StatusOK, "finder.html", VersionResponse{Name: "v1.4.0", Version: versions["v1.4.0"]})
+			c.HTML(http.StatusOK, "finder.html", VersionResponse{Name: "v1.4.1", Version: versions["v1.4.1"]})
 		})
 	}
 
